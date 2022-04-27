@@ -29,7 +29,7 @@ namespace PTS_Project_GUI
 
         private void CollectPaths()
         {
-            System.Windows.MessageBox.Show("Please select the Long Course File");
+            System.Windows.MessageBox.Show("Please select the Logs Course File");
             Globals.longCoursePath = GetFilePath();
 
             System.Windows.MessageBox.Show("Please select the Course-A Year 1 File");
@@ -56,8 +56,7 @@ namespace PTS_Project_GUI
 
         private void MerkiNaRazseivaneButtonClick(object sender, RoutedEventArgs e) //На мишо
         {
-            merki_na_razseivane_window tempWindow = new merki_na_razseivane_window();
-            tempWindow.Show();
+            MerkiNaRazseivane.CalculateAndShow();
         }
 
         private void KorelacionenAnalizButtonClick(object sender, RoutedEventArgs e)

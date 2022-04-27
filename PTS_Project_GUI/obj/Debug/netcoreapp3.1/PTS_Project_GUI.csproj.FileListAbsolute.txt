@@ -4,15 +4,15 @@ D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\bin\Debug
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\bin\Debug\netcoreapp3.1\PTS_Project_GUI.runtimeconfig.dev.json
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\bin\Debug\netcoreapp3.1\PTS_Project_GUI.dll
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\bin\Debug\netcoreapp3.1\PTS_Project_GUI.pdb
+D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\bin\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.csproj.AssemblyReference.cache
+D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.csproj.ResolveComReference.cache
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\MainWindow.g.cs
-D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\merki_na_razseivane_window.g.cs
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\App.g.cs
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI_MarkupCompile.cache
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI_MarkupCompile.lref
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\MainWindow.baml
-D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\merki_na_razseivane_window.baml
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.g.resources
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.GeneratedMSBuildEditorConfig.editorconfig
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.AssemblyInfoInputs.cache
