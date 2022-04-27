@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "PTS_Project_GUI/1.0.0": {
+        "runtime": {
+          "PTS_Project_GUI.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PTS_Project_GUI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
