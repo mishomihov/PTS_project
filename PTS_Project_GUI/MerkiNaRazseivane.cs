@@ -9,20 +9,23 @@ using System.Linq;
 
 namespace PTS_Project_GUI
 {
-    internal class MerkiNaRazseivane
+    public class MerkiNaRazseivane
     {
-        private static string CopyExcelTableToTempTextFile()
+        public static string CopyExcelTableToTempTextFile(string longCoursePath, bool testingTempFile)
         {
             string tempFilePath = Path.GetTempPath() + "tempMisho.txt";
 
-            Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(Globals.longCoursePath); //the path to the excel table
-            Excel.Worksheet xlWorksheet = xlWorkbook.Sheets[1];
-            Excel.Range xlRange = xlWorksheet.UsedRange;
+            if (!testingTempFile) //тази част от кода не се изпълнява ако провеждаме тест за Temp File Path
+            {
+                Excel.Application xlApp = new Excel.Application();
+                Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(longCoursePath); //the path to the excel table
+                Excel.Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+                Excel.Range xlRange = xlWorksheet.UsedRange;
 
-            xlWorksheet.SaveAs(tempFilePath, 42); //записваме таблицата във временен текстов файл
+                xlWorksheet.SaveAs(tempFilePath, 42); //записваме таблицата във временен текстов файл
 
-            CloseExcelTable(xlRange, xlWorksheet, xlWorkbook, xlApp);
+                CloseExcelTable(xlRange, xlWorksheet, xlWorkbook, xlApp);
+            }
 
             return tempFilePath;
         }
@@ -102,7 +105,7 @@ namespace PTS_Project_GUI
         
         public static void CalculateAndShow()
         {
-            string textFilePath = CopyExcelTableToTempTextFile(); //Копираме таблицата в текстов файл за по-бърза обработка
+            string textFilePath = CopyExcelTableToTempTextFile(Globals.longCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
 
             List<int> data = ExtractDataFromTempTextFile(textFilePath);
 
