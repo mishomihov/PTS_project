@@ -2,7 +2,7 @@ using NUnit.Framework;
 using PTS_Project_GUI;
 using System.IO;
 
-namespace MerkiNaRazseivaneTests
+namespace Tests
 {
     public class Tests
     {

@@ -3887,11 +3887,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\MerkiNaRazseivaneTests\\Tests.csproj",
+      "projectUniqueName": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\Tests\\Tests.csproj",
       "projectName": "Tests",
-      "projectPath": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\MerkiNaRazseivaneTests\\Tests.csproj",
+      "projectPath": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\Tests\\Tests.csproj",
       "packagesPath": "C:\\Users\\mishoNastolen\\.nuget\\packages\\",
-      "outputPath": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\MerkiNaRazseivaneTests\\obj\\",
+      "outputPath": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mishoNastolen\\AppData\\Roaming\\NuGet\\NuGet.Config",

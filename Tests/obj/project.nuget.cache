@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5xvdrVm5Wx+eEXFmNeOVB1oeJTMUUZtVXa3yinkO64ZcZDKvvua8HDxtU4ZBOJSmRT0JP5bMdL6qr+zO9qNRgQ==",
+  "dgSpecHash": "Il3AxGtOy9nKVkqBYg8szNLKZqsxaG2J5r1Gp3dz1CH8vNwz6tEj7Bg8pmMmEHpQ6vGkSz3zrmLSUYc2ucxq3Q==",
   "success": true,
-  "projectFilePath": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\MerkiNaRazseivaneTests\\Tests.csproj",
+  "projectFilePath": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\Tests\\Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mishoNastolen\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\mishoNastolen\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",
