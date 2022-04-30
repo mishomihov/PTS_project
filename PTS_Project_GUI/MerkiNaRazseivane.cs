@@ -11,14 +11,14 @@ namespace PTS_Project_GUI
 {
     public class MerkiNaRazseivane
     {
-        public static string CopyExcelTableToTempTextFile(string longCoursePath, bool testingTempFile)
+        public static string CopyExcelTableToTempTextFile(string logsCoursePath, bool testingTempFile)
         {
             string tempFilePath = Path.GetTempPath() + "tempMisho.txt";
 
             if (!testingTempFile) //тази част от кода не се изпълнява ако провеждаме тест за Temp File Path
             {
                 Excel.Application xlApp = new Excel.Application();
-                Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(longCoursePath); //the path to the excel table
+                Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(logsCoursePath); //the path to the excel table
                 Excel.Worksheet xlWorksheet = xlWorkbook.Sheets[1];
                 Excel.Range xlRange = xlWorksheet.UsedRange;
 
@@ -105,7 +105,7 @@ namespace PTS_Project_GUI
         
         public static void CalculateAndShow()
         {
-            string textFilePath = CopyExcelTableToTempTextFile(Globals.longCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
+            string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
 
             List<int> data = ExtractDataFromTempTextFile(textFilePath);
 
