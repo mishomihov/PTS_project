@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "kl5evPtY03VR+a3fZDli/sgPP+OntRYTHNruLkEB7ToP+EM6veBnyKNMGSW4dXK+/hRXSGOU9ADh7uFFVetlJQ==",
+  "dgSpecHash": "NaYkeykVqrZ86B9YSfeTe+CBqWxejEiwJfIPJDKaiFDl+CAG+/TDwpXAtql68noGRS/dmYPDrHcYnkQHay9L0w==",
   "success": true,
-  "projectFilePath": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\proekt_aleksieva\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mishoNastolen\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\mishoNastolen\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
-    "C:\\Users\\mishoNastolen\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
-    "C:\\Users\\mishoNastolen\\.nuget\\packages\\nunit3testadapter\\4.2.1\\nunit3testadapter.4.2.1.nupkg.sha512"
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\nunit3testadapter\\4.2.1\\nunit3testadapter.4.2.1.nupkg.sha512"
   ],
   "logs": []
 }
