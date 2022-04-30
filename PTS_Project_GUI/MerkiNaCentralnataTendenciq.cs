@@ -76,9 +76,78 @@ namespace PTS_Project_GUI
             return data;
         }
 
+        private static double FindMediana(List<int> data)
+        {
+            double mediana;
+
+            if ((data.Count() % 2) != 0) //Ако броя на прегледаните лекции е нечетен (пр. 11)
+            {
+                int tempDataCnt = data.Count() - 1; //Намаляваме броя на лекциите с 1, за да получим четен резултат (tempDataCnt = 10)
+
+                tempDataCnt = tempDataCnt / 2; //делим на 2 и получаваме индекса на медианата (tempDataCnt = 5)
+
+                mediana = data[tempDataCnt]; //Взимаме стойността с получения индекс data[5]
+            }
+            else //Ако броя е четен (пр. 10)
+            {
+                int tempDataCnt = data.Count();
+
+                tempDataCnt = tempDataCnt / 2; //делим на 2 (tempDataCnt = 5)
+
+                mediana = (data[tempDataCnt] + data[tempDataCnt - 1]) / 2; //взимаме първата и втората стойност от медианата и намираме средна стойност
+                                                                           //пр. (data[5] + data[4]) / 2
+            }
+
+            return mediana;
+        }
+
+        public static List<int> FindModa(List<int> data)
+        {
+            List<int> sumOfAllLectures = new List<int>();
+
+            for (int i=0;i<data.Last();i++)//Създаваме list с размер, броя на отделните лекции
+            {
+                sumOfAllLectures.Add(0);
+            }
+
+            for (int i = 0; i < data.Count; i++) //увеличаваме с 1 елементите от list-a, спрямо срещнатия на конкретния индекс номер на лекция (пр. за 10-та лекция, увеличаваме 9-ти индекс от list-a)
+            {
+                sumOfAllLectures[data[i] - 1]++;
+            }
+
+            List<int> moda = new List<int>();
+
+            //Намираме първата мода
+            int biggest = 0, saveIndex = 0;
+            for (int i=0;i<sumOfAllLectures.Count;i++)
+            {
+                if(sumOfAllLectures[i] > biggest)
+                {
+                    biggest = sumOfAllLectures[i];
+
+                    saveIndex = i;
+                }
+            }
+
+            moda.Add(saveIndex+1); //dobavqme pyrvata moda
+
+            for (int i=0;i<sumOfAllLectures.Count;i++) //правим проверка дали няма повече от 1 мода
+            {
+                if(i != saveIndex) //изключваме проверката на едни и същи елементи от лист-а, тъй като винаги ще бъдат еднакви
+                {
+                    if(sumOfAllLectures[i] == biggest) //Ако има друга лекция, която се е срещала толкова пъти колкото първата мода, то и тя е мода и я добавяме към листа
+                    {
+                        moda.Add(i+1);
+                    }
+                }    
+            }
+
+            return moda;
+        }
+
         public static void Calculate()
         {
-            string textFilePath = CopyExcelTableToTempTextFile(Globals.longCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
+            string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
 
             List<int> data = ExtractDataFromTempTextFile(textFilePath);
 
@@ -87,39 +156,24 @@ namespace PTS_Project_GUI
             //Намираме средна стойност
             int tempSbor = 0;
 
-            for(int i=0; i<data.Count; i++)
+            for(int i=0; i<data.Count(); i++)
             {
                 tempSbor+= data[i];
             }
 
-            double srednaStoinost = tempSbor / data.Count;
+            double srednaStoinost = (double)tempSbor / (double)data.Count();
 
-            int mediana;
             //Намираме медиана
-            if((data.Count%2) != 0) //Ако броя на прегледаните лекции е нечетен
-            {
-                int tempDataCnt = data.Count - 1; //Намаляваме броя на лекциите с 1, за да получим четен резултат
+            double mediana = FindMediana(data);
 
-                tempDataCnt = tempDataCnt / 2; //делим на 2
+            //Намираме мода
+            List<int> moda = FindModa(data);
 
-                tempDataCnt = tempDataCnt + 1; //добавяме +1 към предната стойност на tempDataCnt и получаваме индекса на медианата
-
-                mediana = data[tempDataCnt]; //Взимаме стойността с получения индекс
-            }
-            else //Ако броя е четен
-            {
-               
-            }
-
-
-            //Намираме дисперсията
-            double dispersiq = Math.Pow(stOtklonenie, 2);
-
-
+            string modaJoined = string.Join(",", moda);
 
             File.Delete(textFilePath); //изтриваме създадения временен текстов файл
 
-            MessageBox.Show("Sredna Stoinost: " + srednaStoinost + ", St. Otklonenie: " + stOtklonenie + ", Dispersiq: " + dispersiq); //Показваме резултатите на потребителя
+            MessageBox.Show("Sredna Stoinost: " + srednaStoinost + ", Mediana: " + mediana + ", Moda: " + modaJoined); //Показваме резултатите на потребителя
         }
     }
 }

@@ -51,7 +51,7 @@ namespace PTS_Project_GUI
 
         private void MerkiNaCentrTendenciqButtonClick(object sender, RoutedEventArgs e)
         {
-
+            MerkiNaCentralnataTendenciq.Calculate();
         }
 
         private void MerkiNaRazseivaneButtonClick(object sender, RoutedEventArgs e) //На мишо
