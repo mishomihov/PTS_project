@@ -30,7 +30,7 @@ namespace PTS_Project_GUI
         private void CollectPaths()
         {
             System.Windows.MessageBox.Show("Please select the Logs Course File");
-            Globals.longCoursePath = GetFilePath();
+            Globals.logsCoursePath = GetFilePath();
 
             System.Windows.MessageBox.Show("Please select the Course-A Year 1 File");
             Globals.courseAYear1Path = GetFilePath();
@@ -44,9 +44,9 @@ namespace PTS_Project_GUI
             
         }
 
-        private void ChestotnoRazpredelenieButtonClick(object sender, RoutedEventArgs e)
+        private void ChestotnoRazpredelenieButtonClick(object sender, RoutedEventArgs e)//Слави
         {
-            
+            ChestotnoRazpredelenie.asdf();
         }
 
         private void MerkiNaCentrTendenciqButtonClick(object sender, RoutedEventArgs e)
@@ -95,7 +95,7 @@ namespace PTS_Project_GUI
 
     static class Globals
     {
-        public static string longCoursePath;
+        public static string logsCoursePath;
         public static string courseAYear1Path;
         public static string courseAYear2Path;
     }
