@@ -4,16 +4,21 @@
 winexe
 C#
 .cs
-C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\
+D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\
 PTS_Project_GUI
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\App.xaml
+D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\App.xaml
 11407045341
 
+<<<<<<< HEAD
 51317962315
 201373025583
+=======
+4-986112686
+201-686436790
+>>>>>>> 999f708ba6cf8a87efb1e5fb99024d6b0c9303c0
 MainWindow.xaml;
 
 False
