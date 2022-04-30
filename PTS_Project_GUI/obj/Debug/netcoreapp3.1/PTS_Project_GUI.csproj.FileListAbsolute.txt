@@ -29,3 +29,34 @@ D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\bin\Debug
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\bin\Debug\netcoreapp3.1\testcentric.engine.metadata.dll
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\bin\Debug\netcoreapp3.1\nunit.framework.dll
 D:\TU\6 semestyr\kursova_aleksieva\GUI\PTS_Project_GUI\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.csproj.CopyComplete
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.dll
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\nunit.engine.dll
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\nunit.engine.api.dll
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\nunit.engine.core.dll
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\testcentric.engine.metadata.dll
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\PTS_Project_GUI.exe
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\PTS_Project_GUI.deps.json
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\PTS_Project_GUI.runtimeconfig.json
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\PTS_Project_GUI.runtimeconfig.dev.json
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\PTS_Project_GUI.dll
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\PTS_Project_GUI.pdb
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\nunit.framework.dll
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\bin\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.csproj.ResolveComReference.cache
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI_MarkupCompile.cache
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI_MarkupCompile.lref
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.g.resources
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.AssemblyInfo.cs
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.csproj.CopyComplete
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.dll
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.pdb
+C:\Users\user\Desktop\bahmmamu\PTS_Project_GUI\obj\Debug\netcoreapp3.1\PTS_Project_GUI.genruntimeconfig.cache
