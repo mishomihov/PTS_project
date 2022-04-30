@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTS_Project_GUI", "PTS_Project_GUI\PTS_Project_GUI.csproj", "{8EF26FFB-F35D-4757-83E1-16A25257B2D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "MerkiNaRazseivaneTests\Tests.csproj", "{4561C20A-85E1-4DB6-A17B-1358B30EF2F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{4561C20A-85E1-4DB6-A17B-1358B30EF2F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

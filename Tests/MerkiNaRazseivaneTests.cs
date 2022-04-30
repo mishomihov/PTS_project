@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Tests
 {
-    public class Tests
+    public class MerkiNaRazseivaneTests
     {
         [SetUp]
         public void Setup()
