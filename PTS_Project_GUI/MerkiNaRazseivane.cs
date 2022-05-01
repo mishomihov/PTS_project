@@ -80,7 +80,7 @@ namespace PTS_Project_GUI
             return finalStOtklonenie;
         }
 
-        public static List<int> ExtractDataFromTempTextFile(string textFilePath)
+        public static List<int> ExtractDataFromTempTextFile(string textFilePath, bool isTesting)
         {
             string[] temp = System.IO.File.ReadAllLines(textFilePath); //Прочитаме всички редове от текстовия файл и ги записваме в масива temp
 
@@ -92,7 +92,14 @@ namespace PTS_Project_GUI
             {
                 if (temp[i].Contains("File: Лекция")) //Проверяваме дали конкретния ред съдържа в себе си посочения текст
                 {
-                    temp[i] = temp[i].Remove(0, 23); //премахване на "File:"
+                    if(isTesting)
+                    {
+                        temp[i] = temp[i].Replace("File:", ""); //SAMO ZA TESTOVE!!!!!!!!!!!!!!!!!
+                    }
+                    else
+                    {
+                        temp[i] = temp[i].Remove(0, 23); //премахване на "File:"
+                    }
 
                     int pos1 = temp[i].IndexOf("я ") + "я ".Length; //Със следващите 2 реда определяме позицията на всички символи, които седят между последната буква от думата "Лекция"
                     int pos2 = temp[i].IndexOf(":");                //и последващото двоеточие - тоест взимаме само номера на лекцията.
@@ -109,7 +116,7 @@ namespace PTS_Project_GUI
         {
             string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
 
-            List<int> data = ExtractDataFromTempTextFile(textFilePath);
+            List<int> data = ExtractDataFromTempTextFile(textFilePath,false);
 
             //Данните от таблицата са събрани и от тук започва пресмятането
             //За формули:

@@ -252,19 +252,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {}
+    "C:\\Users\\mishoNastolen\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\proekt_aleksieva\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
+      "projectUniqueName": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
       "projectName": "PTS_Project_GUI",
-      "projectPath": "C:\\Users\\user\\Desktop\\proekt_aleksieva\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\proekt_aleksieva\\PTS_Project_GUI\\obj\\",
+      "projectPath": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
+      "packagesPath": "C:\\Users\\mishoNastolen\\.nuget\\packages\\",
+      "outputPath": "D:\\TU\\6 semestyr\\kursova_aleksieva\\GUI\\PTS_Project_GUI\\PTS_Project_GUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mishoNastolen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -317,7 +317,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
