@@ -46,7 +46,7 @@ namespace PTS_Project_GUI
 
         private void ChestotnoRazpredelenieButtonClick(object sender, RoutedEventArgs e)//Слави
         {
-            ChestotnoRazpredelenie.asdf();
+            ChestotnoRazpredelenie.CalculatingProgram();
         }
 
         private void MerkiNaCentrTendenciqButtonClick(object sender, RoutedEventArgs e)
