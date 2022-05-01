@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "E0Nd8w+D62RbTYV4aZL+2igXtcO0lTXBBgvU6k5+ZMaBa5vx4IBumqQ9KGODyi8p9syvQrBO8zJmoS1WT/H7Kw==",
+  "dgSpecHash": "NaYkeykVqrZ86B9YSfeTe+CBqWxejEiwJfIPJDKaiFDl+CAG+/TDwpXAtql68noGRS/dmYPDrHcYnkQHay9L0w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\bahmmamu\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\proekt_aleksieva\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",

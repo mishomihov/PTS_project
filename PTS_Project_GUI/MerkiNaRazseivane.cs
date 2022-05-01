@@ -51,7 +51,7 @@ namespace PTS_Project_GUI
             //cleanup complete
         }
 
-        private static double FindStandartDeviation(List<int> data)
+        public static double FindStandartDeviation(List<int> data)
         {
             //Изчисляваме средно аритметично на всички номера на лекции (1 стъпка)
             double srAr = 0;
@@ -75,10 +75,12 @@ namespace PTS_Project_GUI
             //Стъпка 5. Изчисляваме корен квадратен от сумата от стъпка 4
             double finalStOtklonenie = Math.Sqrt(zaKoren);
 
+           finalStOtklonenie = Math.Round(finalStOtklonenie,2);
+
             return finalStOtklonenie;
         }
 
-        private static List<int> ExtractDataFromTempTextFile(string textFilePath)
+        public static List<int> ExtractDataFromTempTextFile(string textFilePath)
         {
             string[] temp = System.IO.File.ReadAllLines(textFilePath); //Прочитаме всички редове от текстовия файл и ги записваме в масива temp
 

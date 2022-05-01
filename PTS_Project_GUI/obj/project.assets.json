@@ -257,11 +257,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\bahmmamu\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Desktop\\proekt_aleksieva\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
       "projectName": "PTS_Project_GUI",
-      "projectPath": "C:\\Users\\user\\Desktop\\bahmmamu\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
+      "projectPath": "C:\\Users\\user\\Desktop\\proekt_aleksieva\\PTS_Project_GUI\\PTS_Project_GUI.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\bahmmamu\\PTS_Project_GUI\\obj\\",
+      "outputPath": "C:\\Users\\user\\Desktop\\proekt_aleksieva\\PTS_Project_GUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
