@@ -149,31 +149,40 @@ namespace PTS_Project_GUI
         {
             string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
 
-            List<int> data = ExtractDataFromTempTextFile(textFilePath);
-
-            data.Sort(); //Сортираме номерата на лекциите във възходящ ред
-
-            //Намираме средна стойност
-            int tempSbor = 0;
-
-            for(int i=0; i<data.Count(); i++)
+            if (new FileInfo(textFilePath).Length < 7)
             {
-                tempSbor+= data[i];
+                MessageBox.Show("The logs cource file is empty, please try choosing different file!");
+                File.Delete(textFilePath); //изтриваме създадения временен текстов файл
             }
+            else
+            {
 
-            double srednaStoinost = (double)tempSbor / (double)data.Count();
+                List<int> data = ExtractDataFromTempTextFile(textFilePath);
 
-            //Намираме медиана
-            double mediana = FindMediana(data);
+                data.Sort(); //Сортираме номерата на лекциите във възходящ ред
 
-            //Намираме мода
-            List<int> moda = FindModa(data);
+                //Намираме средна стойност
+                int tempSbor = 0;
 
-            string modaJoined = string.Join(",", moda);
+                for (int i = 0; i < data.Count(); i++)
+                {
+                    tempSbor += data[i];
+                }
 
-            File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+                double srednaStoinost = (double)tempSbor / (double)data.Count();
 
-            MessageBox.Show("Sredna Stoinost: " + srednaStoinost + ", Mediana: " + mediana + ", Moda: " + modaJoined); //Показваме резултатите на потребителя
+                //Намираме медиана
+                double mediana = FindMediana(data);
+
+                //Намираме мода
+                List<int> moda = FindModa(data);
+
+                string modaJoined = string.Join(",", moda);
+
+                File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+
+                MessageBox.Show("Sredna Stoinost: " + srednaStoinost + ", Mediana: " + mediana + ", Moda: " + modaJoined); //Показваме резултатите на потребителя
+            }
         }
     }
 }

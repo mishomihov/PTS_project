@@ -22,6 +22,12 @@ namespace PTS_Project_GUI
                 Excel.Worksheet xlWorksheet = xlWorkbook.Sheets[1];
                 Excel.Range xlRange = xlWorksheet.UsedRange;
 
+                /*if(xlWorksheet.Cells.Rows.Count == 0)
+                {
+                    string errorMessage = "Error";
+                    return errorMessage;
+                }*/ //DELETE IF NOT NEEDED
+
                 xlWorksheet.SaveAs(tempFilePath, 42); //записваме таблицата във временен текстов файл
 
                 CloseExcelTable(xlRange, xlWorksheet, xlWorkbook, xlApp);
@@ -116,29 +122,38 @@ namespace PTS_Project_GUI
         {
             string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
 
-            List<int> data = ExtractDataFromTempTextFile(textFilePath,false);
+            if (new FileInfo(textFilePath).Length < 7)
+            {
+                MessageBox.Show("The logs cource file is empty, please try choosing different file!");
+                File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+            }
+            else
+            {
 
-            //Данните от таблицата са събрани и от тук започва пресмятането
-            //За формули:
-            //https://www.matematika.bg/reshavane-na-zadachi/kalkulator-statistika.html
-            //https://bg.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/variance-standard-deviation-population/a/calculating-standard-deviation-step-by-step
+                List<int> data = ExtractDataFromTempTextFile(textFilePath, false);
 
-            data.Sort(); //Сортираме номерата на лекциите във възходящ ред
+                //Данните от таблицата са събрани и от тук започва пресмятането
+                //За формули:
+                //https://www.matematika.bg/reshavane-na-zadachi/kalkulator-statistika.html
+                //https://bg.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/variance-standard-deviation-population/a/calculating-standard-deviation-step-by-step
 
-            int razmah = data.Last() - data.First();
+                data.Sort(); //Сортираме номерата на лекциите във възходящ ред
 
-            //Намираме стандартното отклонение
-            double stOtklonenie = FindStandartDeviation(data);
+                int razmah = data.Last() - data.First();
 
-
-            //Намираме дисперсията
-            double dispersiq = Math.Pow(stOtklonenie, 2);
+                //Намираме стандартното отклонение
+                double stOtklonenie = FindStandartDeviation(data);
 
 
+                //Намираме дисперсията
+                double dispersiq = Math.Pow(stOtklonenie, 2);
 
-            File.Delete(textFilePath); //изтриваме създадения временен текстов файл
 
-            MessageBox.Show("Razmah: " + razmah + ", St. Otklonenie: " + stOtklonenie + ", Dispersiq: " + dispersiq); //Показваме резултатите на потребителя
+
+                File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+
+                MessageBox.Show("Razmah: " + razmah + ", St. Otklonenie: " + stOtklonenie + ", Dispersiq: " + dispersiq); //Показваме резултатите на потребителя
+            }
         }
     }
 }
