@@ -13,6 +13,9 @@
         <Button x:Name="merki_na_centr_tendenciq_button" Content="Определяне на мерки на централната тендеция за&#xD;&#xA;прегледани лекции" HorizontalAlignment="Center" VerticalAlignment="Top" Height="51" Width="306" FontWeight="Normal" Click="MerkiNaCentrTendenciqButtonClick" Margin="0,196,0,0"/>
         <Button x:Name="merki_na_razseivane_button" Content="Мерки на разсейване за прегледани лекции" HorizontalAlignment="Center" VerticalAlignment="Top" Height="51" Width="306" FontWeight="Normal" Click="MerkiNaRazseivaneButtonClick" Margin="0,259,0,0"/>
         <Button x:Name="korelacionen_analiz_button" Content="Корелационен анализ на брой прегледани лекции" HorizontalAlignment="Center" VerticalAlignment="Top" Height="51" Width="306" FontWeight="Normal" Click="KorelacionenAnalizButtonClick" Margin="0,328,0,0"/>
+        <Button x:Name="change_logs_course_path_button" Content="Change Logs Course File Path" HorizontalAlignment="Left" Margin="32,156,0,0" VerticalAlignment="Top" Click="ChangePathOfFile"/>
+        <Button x:Name="change_course_a_year_1_path_button" Content="Change Course A Year 1 File Path" HorizontalAlignment="Left" Margin="32,203,0,0" VerticalAlignment="Top" Click="ChangePathOfFile"/>
+        <Button x:Name="change_course_a_year_2_path_button" Content="Change Course A Year 2 File Path" HorizontalAlignment="Left" Margin="32,259,0,0" VerticalAlignment="Top" Click="ChangePathOfFile"/>
 
     </Grid>
 </Window>

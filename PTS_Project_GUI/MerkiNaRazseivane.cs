@@ -122,12 +122,12 @@ namespace PTS_Project_GUI
         {
             string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
 
-            if (new FileInfo(textFilePath).Length < 7)
+            if (new FileInfo(textFilePath).Length < 7) //проверяваме дали текстовия файл е празен и показваме грешка ако е празен
             {
                 MessageBox.Show("The logs cource file is empty, please try choosing different file!");
                 File.Delete(textFilePath); //изтриваме създадения временен текстов файл
             }
-            else
+            else //Ако всичко с файлове е наред продължаваме с пресмятането и показването на данните
             {
 
                 List<int> data = ExtractDataFromTempTextFile(textFilePath, false);
