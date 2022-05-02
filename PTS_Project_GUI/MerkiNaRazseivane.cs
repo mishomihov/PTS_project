@@ -110,8 +110,15 @@ namespace PTS_Project_GUI
                     int pos1 = temp[i].IndexOf("я ") + "я ".Length; //Със следващите 2 реда определяме позицията на всички символи, които седят между последната буква от думата "Лекция"
                     int pos2 = temp[i].IndexOf(":");                //и последващото двоеточие - тоест взимаме само номера на лекцията.
                                                                     //Това се налага, защото не сме сигурни дали лекцията е с едноцифрен или многоцифрен номер
+                    try
+                    {
+                        data.Add(Int32.Parse(temp[i].Substring(pos1, pos2 - pos1))); //в този List добавяме само извлечените номера на лекциите, като ги Parse-ваме към int
+                    }catch
+                    {
+                        MessageBox.Show("The file was containing one or more lines with wrong format. Please repair it or choose a different file!");
+                        return data;
+                    }
 
-                    data.Add(Int32.Parse(temp[i].Substring(pos1, pos2 - pos1))); //в този List добавяме само извлечените номера на лекциите, като ги Parse-ваме към int
                 }
             }
 
@@ -132,27 +139,43 @@ namespace PTS_Project_GUI
 
                 List<int> data = ExtractDataFromTempTextFile(textFilePath, false);
 
-                //Данните от таблицата са събрани и от тук започва пресмятането
-                //За формули:
-                //https://www.matematika.bg/reshavane-na-zadachi/kalkulator-statistika.html
-                //https://bg.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/variance-standard-deviation-population/a/calculating-standard-deviation-step-by-step
+                if (data.Count > 0) //Ако са върнати данни и не е имало проблем в предната функция, изпълняваме останалите условия
+                {
+                    if (data.Count > 1) //Ако във файла има повече от 1 запис, продължаваме с изчисленията
+                    {
+                        //Данните от таблицата са събрани и от тук започва пресмятането
+                        //За формули:
+                        //https://www.matematika.bg/reshavane-na-zadachi/kalkulator-statistika.html
+                        //https://bg.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/variance-standard-deviation-population/a/calculating-standard-deviation-step-by-step
 
-                data.Sort(); //Сортираме номерата на лекциите във възходящ ред
+                        data.Sort(); //Сортираме номерата на лекциите във възходящ ред
 
-                int razmah = data.Last() - data.First();
+                        int razmah = data.Last() - data.First();
 
-                //Намираме стандартното отклонение
-                double stOtklonenie = FindStandartDeviation(data);
-
-
-                //Намираме дисперсията
-                double dispersiq = Math.Pow(stOtklonenie, 2);
+                        //Намираме стандартното отклонение
+                        double stOtklonenie = FindStandartDeviation(data);
 
 
+                        //Намираме дисперсията
+                        double dispersiq = Math.Pow(stOtklonenie, 2);
 
-                File.Delete(textFilePath); //изтриваме създадения временен текстов файл
 
-                MessageBox.Show("Razmah: " + razmah + ", St. Otklonenie: " + stOtklonenie + ", Dispersiq: " + dispersiq); //Показваме резултатите на потребителя
+
+                        File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+
+                        MessageBox.Show("Razmah: " + razmah + ", St. Otklonenie: " + stOtklonenie + ", Dispersiq: " + dispersiq); //Показваме резултатите на потребителя
+                    }
+                    else //Ако има само 1 запис показваме съобщение за грешка, защото не можем да направим нужните изчисления само с 1 запис
+                    {
+                        MessageBox.Show("For these calculations the program needs at least 2 logs! Please change the file or edit it");
+
+                        File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+                    }
+                }
+                else //Ако е имало проблем и функцията ExtractDataFromTempTextFile е върнала празен лист, не правим нищо, а само изтриваме Temp файла
+                {
+                    File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+                }
             }
         }
     }

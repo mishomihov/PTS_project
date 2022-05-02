@@ -69,7 +69,15 @@ namespace PTS_Project_GUI
                     int pos2 = temp[i].IndexOf(":");                //и последващото двоеточие - тоест взимаме само номера на лекцията.
                                                                     //Това се налага, защото не сме сигурни дали лекцията е с едноцифрен или многоцифрен номер
 
-                    data.Add(Int32.Parse(temp[i].Substring(pos1, pos2 - pos1))); //в този List добавяме само извлечените номера на лекциите, като ги Parse-ваме към int
+                    try
+                    {
+                        data.Add(Int32.Parse(temp[i].Substring(pos1, pos2 - pos1))); //в този List добавяме само извлечените номера на лекциите, като ги Parse-ваме към int
+                    }
+                    catch
+                    {
+                        MessageBox.Show("The file was containing one or more lines with wrong format. Please repair it or choose a different file!");
+                        return data;
+                    }
                 }
             }
 
@@ -159,29 +167,45 @@ namespace PTS_Project_GUI
 
                 List<int> data = ExtractDataFromTempTextFile(textFilePath);
 
-                data.Sort(); //Сортираме номерата на лекциите във възходящ ред
-
-                //Намираме средна стойност
-                int tempSbor = 0;
-
-                for (int i = 0; i < data.Count(); i++)
+                if (data.Count > 0) //Ако са върнати данни и не е имало проблем в предната функция, изпълняваме останалите условия
                 {
-                    tempSbor += data[i];
+                    if (data.Count > 2) //Ако във файла има повече от 2 записа, продължаваме с изчисленията
+                    {
+                        data.Sort(); //Сортираме номерата на лекциите във възходящ ред
+
+                        //Намираме средна стойност
+                        int tempSbor = 0;
+
+                        for (int i = 0; i < data.Count(); i++)
+                        {
+                            tempSbor += data[i];
+                        }
+
+                        double srednaStoinost = (double)tempSbor / (double)data.Count();
+
+                        //Намираме медиана
+                        double mediana = FindMediana(data);
+
+                        //Намираме мода
+                        List<int> moda = FindModa(data);
+
+                        string modaJoined = string.Join(",", moda);
+
+                        File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+
+                        MessageBox.Show("Sredna Stoinost: " + srednaStoinost + ", Mediana: " + mediana + ", Moda: " + modaJoined); //Показваме резултатите на потребителя
+                    }
+                    else //Ако има само 2 записа показваме съобщение за грешка, защото не можем да направим нужните изчисления само с 2 записа
+                    {
+                        MessageBox.Show("For these calculations the program needs at least 3 logs! Please change the file or edit it");
+
+                        File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+                    }
                 }
-
-                double srednaStoinost = (double)tempSbor / (double)data.Count();
-
-                //Намираме медиана
-                double mediana = FindMediana(data);
-
-                //Намираме мода
-                List<int> moda = FindModa(data);
-
-                string modaJoined = string.Join(",", moda);
-
-                File.Delete(textFilePath); //изтриваме създадения временен текстов файл
-
-                MessageBox.Show("Sredna Stoinost: " + srednaStoinost + ", Mediana: " + mediana + ", Moda: " + modaJoined); //Показваме резултатите на потребителя
+                else //Ако е имало проблем и функцията ExtractDataFromTempTextFile е върнала празен лист, не правим нищо, а само изтриваме Temp файла
+                {
+                    File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+                }
             }
         }
     }
