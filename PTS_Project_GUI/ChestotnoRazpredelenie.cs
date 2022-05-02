@@ -69,20 +69,28 @@ namespace PTS_Project_GUI
                     int pos2 = temp[i].IndexOf(":");                //и последващото двоеточие - тоест взимаме само номера на лекцията.
                                                                     //Това се налага, защото не сме сигурни дали лекцията е с едноцифрен или многоцифрен номер
 
-                    data.Add(Int32.Parse(temp[i].Substring(pos1, pos2 - pos1))); //в този List добавяме само извлечените номера на лекциите, като ги Parse-ваме към int
+                    try
+                    {
+                        data.Add(Int32.Parse(temp[i].Substring(pos1, pos2 - pos1))); //в този List добавяме само извлечените номера на лекциите, като ги Parse-ваме към int
+                    }
+                    catch
+                    {
+                        MessageBox.Show("The file was containing one or more lines with wrong format. Please repair it or choose a different file!");
+                        return data;
+                    }
                 }
             }
 
             return data;
         }
 
-        private static int[] AbsolutnaChestota(int lastData, List<int> data)
+        public static int[] AbsolutnaChestota(List<int> data,int howManyDiffLectures)
         {
             //Преброява и изчислява всяка лекция колко пъти е гледана (абсолютна честота)
             int indexOfLastFound = -1, counter = 0;
-            int[] absoluteFR = new int[lastData];
+            int[] absoluteFR = new int[howManyDiffLectures];
 
-            for (int i = 0; i < lastData; i++)
+            for (int i = 0; i < howManyDiffLectures; i++)
             {
                 while (true)
                 {
@@ -98,9 +106,9 @@ namespace PTS_Project_GUI
             return absoluteFR;
         }
 
-        private static double[] OtnositelnaChestota(int lastData,int[] absoluteFR) 
+        public static double[] OtnositelnaChestota(int lastData,int[] absoluteFR) 
         {
-            //Sums all the lections watched for future calculations
+            //Събира всички гледани лекции за следващи изчисления
             
             int sumAbsoluteFR=0;
             for (int i = 0; i < absoluteFR.Length; i++)
@@ -124,21 +132,59 @@ namespace PTS_Project_GUI
         public static void CalculatingProgram()
         {
             string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
-            List<int> data = ExtractDataFromTempTextFile(textFilePath);
-            data.Sort(); //Сортираме номерата на лекциите във възходящ ред
+            if (new FileInfo(textFilePath).Length < 7) //проверяваме дали текстовия файл е празен и показваме грешка ако е празен
+            {
+                MessageBox.Show("The logs cource file is empty, please try choosing different file!");
+                File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+            }
+            else //Ако всичко с файлове е наред продължаваме с пресмятането и показването на данните
+            {
+                List<int> data = ExtractDataFromTempTextFile(textFilePath);
 
-            int[] absoluteFR = new int[data.Last()];
-            double[] relativeFR = new double[data.Last()];
+                //Преглежда колко различни лекции са гледани
+                data.Sort(); //Сортираме номерата на лекциите във възходящ ред
+                int howManyDiffLectures = 0;
+                bool[] isLecturePresent = new bool[data.Last()]; //Взимаме най-големия номер на лекция и предполагаме, че имаме максимум data.Last() лекции (примерно 10)
 
-            absoluteFR = AbsolutnaChestota(data.Last(), data);
-            relativeFR = OtnositelnaChestota(data.Last(),absoluteFR);
+                for (int i = 0; i < data.Count(); i++) //Проверява всички записи в data и вдига флаг в масива, ако се среща лекция със (съответния номер - 1) Пр. за 8 лекция вдигаме флаг в масива с индекс 7
+                {
+                    isLecturePresent[data[i] - 1] = true;
+                }
 
-            string absolutnaJoined = string.Join(",", absoluteFR);
-            string otnositelnaJoined = string.Join(",", relativeFR);
-            MessageBox.Show(absolutnaJoined + relativeFR); ;
-            
+                for (int i = 0; i < isLecturePresent.Length; i++) //Проверява всички елементи от масива и увеличава с 1 променливата, ако лекцията е срещата (ако флага е true)
+                {
+                    if (isLecturePresent[i])
+                    {
+                        howManyDiffLectures++;
+                    }
+                }
 
-            File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+
+                if (data.Count > 0) //Ако са върнати данни и не е имало проблем в предната функция, изпълняваме останалите условия
+                {
+                    data.Sort(); //Сортираме номерата на лекциите във възходящ ред
+
+                    int[] absoluteFR = new int[howManyDiffLectures];
+                    double[] relativeFR = new double[howManyDiffLectures];
+
+                    absoluteFR = AbsolutnaChestota(data, howManyDiffLectures);
+                    relativeFR = OtnositelnaChestota(howManyDiffLectures, absoluteFR);
+                    for (int i = 0; i < relativeFR.Length; i++)
+                    {
+                        relativeFR[i] = Math.Round(relativeFR[i], 2);
+                    }
+                    string absolutnaJoined = string.Join(",  ", absoluteFR);
+                    string otnositelnaJoined = string.Join(",  ", relativeFR);
+                    MessageBox.Show("Абсолютна честота на лекциите:" + "\n" + absolutnaJoined + "\n" + "Относителна честота на лекциите в проценти: " + "\n" + otnositelnaJoined); ;
+
+
+                    File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+                }
+                else //Ако е имало проблем и функцията ExtractDataFromTempTextFile е върнала празен лист, не правим нищо, а само изтриваме Temp файла
+                {
+                    File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+                }
+            }
         }
     }
 }
