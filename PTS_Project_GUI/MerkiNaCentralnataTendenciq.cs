@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace PTS_Project_GUI
 {
-    internal class MerkiNaCentralnataTendenciq
+    public class MerkiNaCentralnataTendenciq
     {
         public static string CopyExcelTableToTempTextFile(string longCoursePath, bool testingTempFile)
         {
@@ -84,7 +84,7 @@ namespace PTS_Project_GUI
             return data;
         }
 
-        private static double FindMediana(List<int> data)
+        public static double FindMediana(List<int> data)
         {
             double mediana;
 
@@ -113,14 +113,14 @@ namespace PTS_Project_GUI
         {
             List<int> sumOfAllLectures = new List<int>();
 
-            for (int i=0;i<data.Last();i++)//Създаваме list с размер, броя на отделните лекции
+            for (int i=0;i<data.Last();i++)//Създаваме list с размер, най-големия номер на лекция
             {
                 sumOfAllLectures.Add(0);
             }
 
             for (int i = 0; i < data.Count(); i++) //увеличаваме с 1 елементите от list-a, спрямо срещнатия на конкретния индекс номер на лекция (пр. за 10-та лекция, увеличаваме 9-ти индекс от list-a)
             {
-                sumOfAllLectures[data[i] - 1]++;
+                sumOfAllLectures [data[i] - 1] ++;
             }
 
             List<int> moda = new List<int>();
@@ -200,6 +200,8 @@ namespace PTS_Project_GUI
                         }
 
                         double srednaStoinost = (double)tempSbor / (double)data.Count();
+
+                        srednaStoinost = Math.Round(srednaStoinost,2);
 
                         //Намираме медиана
                         double mediana = FindMediana(data);
