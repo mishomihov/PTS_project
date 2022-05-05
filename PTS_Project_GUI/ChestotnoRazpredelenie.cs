@@ -84,25 +84,31 @@ namespace PTS_Project_GUI
             return data;
         }
 
-        public static int[] AbsolutnaChestota(List<int> data,int howManyDiffLectures)
+        public static int[] AbsolutnaChestota(List<int> data,int howManyDiffLectures, bool[] isLecturePresent)
         {
             //Преброява и изчислява всяка лекция колко пъти е гледана (абсолютна честота)
             int indexOfLastFound = -1, counter = 0;
-            int[] absoluteFR = new int[howManyDiffLectures];
+            int[] absoluteFR = new int[howManyDiffLectures]; //Създаваме си масив с размер - броя на различните гледани лекции
+            int absoluteFRCounter = 0;
 
-            for (int i = 0; i < howManyDiffLectures; i++)
+            for(int i=0;i<data.Last();i++) //Превъртаме всички възможни лекции
             {
-                while (true)
+                if(isLecturePresent[i]) //Проверяваме дали съответната лекция съществува в data
                 {
-                    indexOfLastFound = data.IndexOf(i + 1, indexOfLastFound + 1);
+                    while (true)
+                    {
+                        indexOfLastFound = data.IndexOf(i + 1, indexOfLastFound + 1); //Търсим дали има съвпадение с исканата лекция
 
-                    if (indexOfLastFound == -1) break;
-                    counter++;
+                        if (indexOfLastFound == -1) break; //Ако няма, излизаме от цикъла
+                        counter++;
+                    }
+                    absoluteFR[absoluteFRCounter] = counter; //записваме колко пъти е срещана лекцията
+                    absoluteFRCounter++;
+                    indexOfLastFound = 0;
+                    counter = 0;
                 }
-                absoluteFR[i] = counter;
-                indexOfLastFound = 0;
-                counter = 0;
             }
+
             return absoluteFR;
         }
 
@@ -165,7 +171,7 @@ namespace PTS_Project_GUI
                     int[] absoluteFR = new int[howManyDiffLectures];
                     double[] relativeFR = new double[howManyDiffLectures];
 
-                    absoluteFR = AbsolutnaChestota(data, howManyDiffLectures);
+                    absoluteFR = AbsolutnaChestota(data, howManyDiffLectures, isLecturePresent);
                     relativeFR = OtnositelnaChestota(howManyDiffLectures, absoluteFR);
                     for (int i = 0; i < relativeFR.Length; i++)
                     {

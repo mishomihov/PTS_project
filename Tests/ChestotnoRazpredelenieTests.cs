@@ -37,7 +37,13 @@ namespace Tests
             absoluteFR[2] = 1;
             absoluteFR[3] = 2;
 
-            Assert.AreEqual(absoluteFR,ChestotnoRazpredelenie.AbsolutnaChestota(data,4));
+            bool[] isLecturePresent = new bool[data.Last()];
+            isLecturePresent[0] = true;
+            isLecturePresent[1] = true;
+            isLecturePresent[2] = true;
+            isLecturePresent[3] = true;
+
+            Assert.AreEqual(absoluteFR,ChestotnoRazpredelenie.AbsolutnaChestota(data,4,isLecturePresent));
         }
 
         [Test]
