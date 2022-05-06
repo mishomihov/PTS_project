@@ -137,57 +137,63 @@ namespace PTS_Project_GUI
 
         public static void CalculatingProgram()
         {
-            string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
-            if (new FileInfo(textFilePath).Length < 7) //проверяваме дали текстовия файл е празен и показваме грешка ако е празен
+            try
             {
-                MessageBox.Show("The logs cource file is empty, please try choosing different file!");
-                File.Delete(textFilePath); //изтриваме създадения временен текстов файл
-            }
-            else //Ако всичко с файлове е наред продължаваме с пресмятането и показването на данните
-            {
-                List<int> data = ExtractDataFromTempTextFile(textFilePath);
-                if (data.Count > 0) //Ако са върнати данни и не е имало проблем в предната функция, изпълняваме останалите условия
+                string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
+                if (new FileInfo(textFilePath).Length < 7) //проверяваме дали текстовия файл е празен и показваме грешка ако е празен
                 {
-                    //Преглежда колко различни лекции са гледани
-                    data.Sort(); //Сортираме номерата на лекциите във възходящ ред
-                    int howManyDiffLectures = 0;
-                    bool[] isLecturePresent = new bool[data.Last()]; //Взимаме най-големия номер на лекция и предполагаме, че имаме максимум data.Last() лекции (примерно 10)
-
-                    for (int i = 0; i < data.Count(); i++) //Проверява всички записи в data и вдига флаг в масива, ако се среща лекция със (съответния номер - 1) Пр. за 8 лекция вдигаме флаг в масива с индекс 7
+                    MessageBox.Show("The logs cource file is empty, please try choosing different file!");
+                    File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+                }
+                else //Ако всичко с файлове е наред продължаваме с пресмятането и показването на данните
+                {
+                    List<int> data = ExtractDataFromTempTextFile(textFilePath);
+                    if (data.Count > 0) //Ако са върнати данни и не е имало проблем в предната функция, изпълняваме останалите условия
                     {
-                    isLecturePresent[data[i] - 1] = true;
-                    }
+                        //Преглежда колко различни лекции са гледани
+                        data.Sort(); //Сортираме номерата на лекциите във възходящ ред
+                        int howManyDiffLectures = 0;
+                        bool[] isLecturePresent = new bool[data.Last()]; //Взимаме най-големия номер на лекция и предполагаме, че имаме максимум data.Last() лекции (примерно 10)
 
-                    for (int i = 0; i < isLecturePresent.Length; i++) //Проверява всички елементи от масива и увеличава с 1 променливата, ако лекцията е срещата (ако флага е true)
-                    {
-                        if (isLecturePresent[i])
+                        for (int i = 0; i < data.Count(); i++) //Проверява всички записи в data и вдига флаг в масива, ако се среща лекция със (съответния номер - 1) Пр. за 8 лекция вдигаме флаг в масива с индекс 7
                         {
-                            howManyDiffLectures++;
+                            isLecturePresent[data[i] - 1] = true;
                         }
+
+                        for (int i = 0; i < isLecturePresent.Length; i++) //Проверява всички елементи от масива и увеличава с 1 променливата, ако лекцията е срещата (ако флага е true)
+                        {
+                            if (isLecturePresent[i])
+                            {
+                                howManyDiffLectures++;
+                            }
+                        }
+
+                        data.Sort(); //Сортираме номерата на лекциите във възходящ ред
+
+                        int[] absoluteFR = new int[howManyDiffLectures];
+                        double[] relativeFR = new double[howManyDiffLectures];
+
+                        absoluteFR = AbsolutnaChestota(data, howManyDiffLectures, isLecturePresent);
+                        relativeFR = OtnositelnaChestota(howManyDiffLectures, absoluteFR);
+                        for (int i = 0; i < relativeFR.Length; i++)
+                        {
+                            relativeFR[i] = Math.Round(relativeFR[i], 2);
+                        }
+                        string absolutnaJoined = string.Join(",  ", absoluteFR);
+                        string otnositelnaJoined = string.Join(",  ", relativeFR);
+                        MessageBox.Show("Абсолютна честота на лекциите:" + "\n" + absolutnaJoined + "\n" + "Относителна честота на лекциите в проценти: " + "\n" + otnositelnaJoined); ;
+
+
+                        File.Delete(textFilePath); //изтриваме създадения временен текстов файл
                     }
-                
-                    data.Sort(); //Сортираме номерата на лекциите във възходящ ред
-
-                    int[] absoluteFR = new int[howManyDiffLectures];
-                    double[] relativeFR = new double[howManyDiffLectures];
-
-                    absoluteFR = AbsolutnaChestota(data, howManyDiffLectures, isLecturePresent);
-                    relativeFR = OtnositelnaChestota(howManyDiffLectures, absoluteFR);
-                    for (int i = 0; i < relativeFR.Length; i++)
+                    else //Ако е имало проблем и функцията ExtractDataFromTempTextFile е върнала празен лист, не правим нищо, а само изтриваме Temp файла
                     {
-                        relativeFR[i] = Math.Round(relativeFR[i], 2);
+                        File.Delete(textFilePath); //изтриваме създадения временен текстов файл
                     }
-                    string absolutnaJoined = string.Join(",  ", absoluteFR);
-                    string otnositelnaJoined = string.Join(",  ", relativeFR);
-                    MessageBox.Show("Абсолютна честота на лекциите:" + "\n" + absolutnaJoined + "\n" + "Относителна честота на лекциите в проценти: " + "\n" + otnositelnaJoined); ;
-
-
-                    File.Delete(textFilePath); //изтриваме създадения временен текстов файл
                 }
-                else //Ако е имало проблем и функцията ExtractDataFromTempTextFile е върнала празен лист, не правим нищо, а само изтриваме Temp файла
-                {
-                    File.Delete(textFilePath); //изтриваме създадения временен текстов файл
-                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Unexpected error happend: " + ex.Message);
             }
         }
     }

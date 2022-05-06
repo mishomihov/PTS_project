@@ -7,11 +7,6 @@ namespace Tests
 {
     public class MerkiNaRazseivaneTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         public void CopyExcelTableToTempTextFile_TempFilePath_Test()
         {

@@ -155,78 +155,84 @@ namespace PTS_Project_GUI
 
         public static void Calculate()
         {
-            string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
-
-            if (new FileInfo(textFilePath).Length < 7) //проверяваме дали текстовия файл е празен и показваме грешка ако е празен
+            try
             {
-                MessageBox.Show("The logs cource file is empty, please try choosing different file!");
-                File.Delete(textFilePath); //изтриваме създадения временен текстов файл
-            }
-            else //Ако всичко с файлове е наред продължаваме с пресмятането и показването на данните
-            {
+                string textFilePath = CopyExcelTableToTempTextFile(Globals.logsCoursePath, false); //Копираме таблицата в текстов файл за по-бърза обработка
 
-                List<int> data = ExtractDataFromTempTextFile(textFilePath);
-                if (data.Count > 0) //Ако са върнати данни и не е имало проблем в предната функция, изпълняваме останалите условия
+                if (new FileInfo(textFilePath).Length < 7) //проверяваме дали текстовия файл е празен и показваме грешка ако е празен
                 {
-                    if (data.Count > 2) //Ако във файла има повече от 2 записа, продължаваме с изчисленията
-                    {
-
-                        //Преглежда колко различни лекции са гледани
-                        data.Sort(); //Сортираме номерата на лекциите във възходящ ред
-                        int howManyDiffLectures = 0;
-                        bool[] isLecturePresent = new bool[data.Last()]; //Взимаме най-големия номер на лекция и предполагаме, че имаме максимум data.Last() лекции (примерно 10)
-
-                        for(int i=0;i<data.Count();i++) //Проверява всички записи в data и вдига флаг в масива, ако се среща лекция със (съответния номер - 1) Пр. за 8 лекция вдигаме флаг в масива с индекс 7
-                        {
-                            isLecturePresent[data[i]-1] = true;
-                        }
-
-                        for(int i=0;i<isLecturePresent.Length;i++) //Проверява всички елементи от масива и увеличава с 1 променливата, ако лекцията е срещата (ако флага е true)
-                        {
-                            if(isLecturePresent[i])
-                            {
-                                howManyDiffLectures++;
-                            }
-                        }
-                        //Намерено е колко различни лекции са гледани
-                
-
-                
-                        //Намираме средна стойност
-                        int tempSbor = 0;
-
-                        for (int i = 0; i < data.Count(); i++)
-                        {
-                            tempSbor += data[i];
-                        }
-
-                        double srednaStoinost = (double)tempSbor / (double)data.Count();
-
-                        srednaStoinost = Math.Round(srednaStoinost,2);
-
-                        //Намираме медиана
-                        double mediana = FindMediana(data);
-
-                        //Намираме мода
-                        List<int> moda = FindModa(data);
-
-                        string modaJoined = string.Join(",", moda);
-
-                        File.Delete(textFilePath); //изтриваме създадения временен текстов файл
-
-                        MessageBox.Show("Sredna Stoinost: " + srednaStoinost + ", Mediana: " + mediana + ", Moda: " + modaJoined); //Показваме резултатите на потребителя
-                    }
-                    else //Ако има само 2 записа показваме съобщение за грешка, защото не можем да направим нужните изчисления само с 2 записа
-                    {
-                        MessageBox.Show("For these calculations the program needs at least 3 logs! Please change the file or edit it");
-
-                        File.Delete(textFilePath); //изтриваме създадения временен текстов файл
-                    }
-                }
-                else //Ако е имало проблем и функцията ExtractDataFromTempTextFile е върнала празен лист, не правим нищо, а само изтриваме Temp файла
-                {
+                    MessageBox.Show("The logs cource file is empty, please try choosing different file!");
                     File.Delete(textFilePath); //изтриваме създадения временен текстов файл
                 }
+                else //Ако всичко с файлове е наред продължаваме с пресмятането и показването на данните
+                {
+
+                    List<int> data = ExtractDataFromTempTextFile(textFilePath);
+                    if (data.Count > 0) //Ако са върнати данни и не е имало проблем в предната функция, изпълняваме останалите условия
+                    {
+                        if (data.Count > 2) //Ако във файла има повече от 2 записа, продължаваме с изчисленията
+                        {
+
+                            //Преглежда колко различни лекции са гледани
+                            data.Sort(); //Сортираме номерата на лекциите във възходящ ред
+                            int howManyDiffLectures = 0;
+                            bool[] isLecturePresent = new bool[data.Last()]; //Взимаме най-големия номер на лекция и предполагаме, че имаме максимум data.Last() лекции (примерно 10)
+
+                            for (int i = 0; i < data.Count(); i++) //Проверява всички записи в data и вдига флаг в масива, ако се среща лекция със (съответния номер - 1) Пр. за 8 лекция вдигаме флаг в масива с индекс 7
+                            {
+                                isLecturePresent[data[i] - 1] = true;
+                            }
+
+                            for (int i = 0; i < isLecturePresent.Length; i++) //Проверява всички елементи от масива и увеличава с 1 променливата, ако лекцията е срещата (ако флага е true)
+                            {
+                                if (isLecturePresent[i])
+                                {
+                                    howManyDiffLectures++;
+                                }
+                            }
+                            //Намерено е колко различни лекции са гледани
+
+
+
+                            //Намираме средна стойност
+                            int tempSbor = 0;
+
+                            for (int i = 0; i < data.Count(); i++)
+                            {
+                                tempSbor += data[i];
+                            }
+
+                            double srednaStoinost = (double)tempSbor / (double)data.Count();
+
+                            srednaStoinost = Math.Round(srednaStoinost, 2);
+
+                            //Намираме медиана
+                            double mediana = FindMediana(data);
+
+                            //Намираме мода
+                            List<int> moda = FindModa(data);
+
+                            string modaJoined = string.Join(",", moda);
+
+                            File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+
+                            MessageBox.Show("Sredna Stoinost: " + srednaStoinost + ", Mediana: " + mediana + ", Moda: " + modaJoined); //Показваме резултатите на потребителя
+                        }
+                        else //Ако има само 2 записа показваме съобщение за грешка, защото не можем да направим нужните изчисления само с 2 записа
+                        {
+                            MessageBox.Show("For these calculations the program needs at least 3 logs! Please change the file or edit it");
+
+                            File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+                        }
+                    }
+                    else //Ако е имало проблем и функцията ExtractDataFromTempTextFile е върнала празен лист, не правим нищо, а само изтриваме Temp файла
+                    {
+                        File.Delete(textFilePath); //изтриваме създадения временен текстов файл
+                    }
+                }
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Unexpected error happend: " + ex.Message);
             }
         }
     }
