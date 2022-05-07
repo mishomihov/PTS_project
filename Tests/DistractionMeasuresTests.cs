@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace Tests
 {
-    public class MerkiNaRazseivaneTests
+    public class DistractionMeasuresTests
     {
         [Test]
         public void CopyExcelTableToTempTextFile_TempFilePath_Test()
         {
-            string test = MerkiNaRazseivane.CopyExcelTableToTempTextFile("", true);
+            string test = DistractionMeasures.CopyExcelTableToTempTextFile("", true);
 
             string hasToBe = Path.GetTempPath() + "tempMisho.txt";
 
@@ -29,7 +29,7 @@ namespace Tests
 
             double testParameter = 1.12;
 
-            Assert.AreEqual(testParameter, MerkiNaRazseivane.FindStandartDeviation(data));
+            Assert.AreEqual(testParameter, DistractionMeasures.FindStandartDeviation(data));
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace Tests
             testData.Add(8);
             testData.Add(7);
 
-            Assert.AreEqual(testData, MerkiNaRazseivane.ExtractDataFromTempTextFile(testFile,true));
+            Assert.AreEqual(testData, DistractionMeasures.ExtractDataFromTempTextFile(testFile,true));
 
             File.Delete(testFile);
         }

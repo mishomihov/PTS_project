@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace PTS_Project_GUI
 {
-    public class MerkiNaRazseivane
+    public class DistractionMeasures
     {
         public static string CopyExcelTableToTempTextFile(string logsCoursePath, bool testingTempFile)
         {

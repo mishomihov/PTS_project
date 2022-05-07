@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Tests
 {
-    internal class MerkiNaCentralnataTendenciqTests
+    internal class CentralTrendTests
     {
         [Test]
         public void FindMediana_Test()
@@ -18,7 +18,7 @@ namespace Tests
             test.Add(2);
             test.Add(3);
 
-            Assert.AreEqual(2, MerkiNaCentralnataTendenciq.FindMediana(test));
+            Assert.AreEqual(2, CentralTrend.FindMediana(test));
         }
         [Test]
         public void FindModa_Test() {
@@ -30,13 +30,13 @@ namespace Tests
             expectedResult.Add(1);
             expectedResult.Add(2);
             expectedResult.Add(3);
-            Assert.AreEqual(expectedResult, MerkiNaCentralnataTendenciq.FindModa(test));
+            Assert.AreEqual(expectedResult, CentralTrend.FindModa(test));
         }
 
         [Test]
         public void CopyExcelTableToTempTextFile_TempFilePath_Test()
         {
-            string test = MerkiNaCentralnataTendenciq.CopyExcelTableToTempTextFile("", true);
+            string test = CentralTrend.CopyExcelTableToTempTextFile("", true);
 
             string hasToBe = Path.GetTempPath() + "tempBogdan.txt";
 

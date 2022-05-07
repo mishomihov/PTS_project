@@ -8,12 +8,12 @@ using System.Linq;
 
 namespace Tests
 {
-    public class ChestotnoRazpredelenieTests
+    public class FrequencyDistributionTests
     {
         [Test]
         public void CopyExcelTableToTempTextFile_TempFilePath_Test()
         {
-            string test = ChestotnoRazpredelenie.CopyExcelTableToTempTextFile("", true);
+            string test = FrequencyDistribution.CopyExcelTableToTempTextFile("", true);
 
             string hasToBe = Path.GetTempPath() + "tempExc.txt";
 
@@ -43,7 +43,7 @@ namespace Tests
             isLecturePresent[2] = true;
             isLecturePresent[3] = true;
 
-            Assert.AreEqual(absoluteFR,ChestotnoRazpredelenie.AbsolutnaChestota(data,4,isLecturePresent));
+            Assert.AreEqual(absoluteFR,FrequencyDistribution.AbsolutnaChestota(data,4,isLecturePresent));
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace Tests
             relativeFR[2] = 20;
             relativeFR[3] = 40;
 
-            Assert.AreEqual(relativeFR,ChestotnoRazpredelenie.OtnositelnaChestota(4,absoluteFR));
+            Assert.AreEqual(relativeFR,FrequencyDistribution.OtnositelnaChestota(4,absoluteFR));
         }
     }
 }

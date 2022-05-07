@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace PTS_Project_GUI
 {
-    public class ChestotnoRazpredelenie
+    public class FrequencyDistribution
     {
         public static string CopyExcelTableToTempTextFile(string logsCoursePath, bool testingTempFile)
         {

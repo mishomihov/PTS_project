@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace PTS_Project_GUI
 {
-    public class MerkiNaCentralnataTendenciq
+    public class CentralTrend
     {
         public static string CopyExcelTableToTempTextFile(string longCoursePath, bool testingTempFile)
         {

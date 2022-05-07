@@ -115,17 +115,17 @@ namespace PTS_Project_GUI
 
         private void ChestotnoRazpredelenieButtonClick(object sender, RoutedEventArgs e)//Слави
         {
-            ChestotnoRazpredelenie.CalculatingProgram();
+            FrequencyDistribution.CalculatingProgram();
         }
 
         private void MerkiNaCentrTendenciqButtonClick(object sender, RoutedEventArgs e)
         {
-            MerkiNaCentralnataTendenciq.Calculate();
+            CentralTrend.Calculate();
         }
 
         private void MerkiNaRazseivaneButtonClick(object sender, RoutedEventArgs e) //На мишо
         {
-            MerkiNaRazseivane.CalculateAndShow();
+            DistractionMeasures.CalculateAndShow();
         }
 
         private void KorelacionenAnalizButtonClick(object sender, RoutedEventArgs e)
