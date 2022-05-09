@@ -5,7 +5,12 @@
       "ProjectGuid": "8ef26ffb-f35d-4757-83e1-16a25257b2d7",
       "DisplayName": "PTS_Project_GUI",
       "ColorIndex": 0
+    },
+    "4561c20a-85e1-4db6-a17b-1358b30ef2f2": {
+      "ProjectGuid": "4561c20a-85e1-4db6-a17b-1358b30ef2f2",
+      "DisplayName": "Tests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
