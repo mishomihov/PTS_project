@@ -108,27 +108,27 @@ namespace PTS_Project_GUI
             }
         }
 
-        private void CheteneButtonClick(object sender, RoutedEventArgs e)
+        private void ReadButtonClick(object sender, RoutedEventArgs e)
         {
             
         }
 
-        private void ChestotnoRazpredelenieButtonClick(object sender, RoutedEventArgs e)//Слави
+        private void FrequencyDistributionButtonClick(object sender, RoutedEventArgs e)//Слави
         {
             FrequencyDistribution.CalculatingProgram();
         }
 
-        private void MerkiNaCentrTendenciqButtonClick(object sender, RoutedEventArgs e)
+        private void CentralTrendButtonClick(object sender, RoutedEventArgs e) //Богдан
         {
             CentralTrend.Calculate();
-        }
+        } 
 
-        private void MerkiNaRazseivaneButtonClick(object sender, RoutedEventArgs e) //На мишо
+        private void DistractionMeasuresButtonClick(object sender, RoutedEventArgs e) //На мишо
         {
             DistractionMeasures.CalculateAndShow();
         }
 
-        private void KorelacionenAnalizButtonClick(object sender, RoutedEventArgs e)
+        private void CorrelationAnalysisButtonClick(object sender, RoutedEventArgs e)
         {
 
         }
