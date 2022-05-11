@@ -109,6 +109,7 @@ namespace PTS_Project_GUI
                         data.Add(Int32.Parse(temp[i].Substring(pos1, pos2 - pos1))); //в този List добавяме само извлечените номера на лекциите, като ги Parse-ваме към int
                     } catch
                     {
+                        data.Clear();
                         MessageBox.Show("The file was containing one or more lines with wrong format. Please repair it or choose a different file!");
                         return data;
                     }

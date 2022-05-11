@@ -75,6 +75,7 @@ namespace PTS_Project_GUI
                     }
                     catch
                     {
+                        data.Clear();
                         MessageBox.Show("The file was containing one or more lines with wrong format. Please repair it or choose a different file!");
                         return data;
                     }
