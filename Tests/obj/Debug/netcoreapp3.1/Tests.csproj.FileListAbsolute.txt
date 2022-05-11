@@ -529,3 +529,5 @@ C:\Users\bogda\Desktop\PTS_PROJECT\Tests\obj\Debug\netcoreapp3.1\Tests.csproj.Co
 C:\Users\bogda\Desktop\PTS_PROJECT\Tests\obj\Debug\netcoreapp3.1\Tests.dll
 C:\Users\bogda\Desktop\PTS_PROJECT\Tests\obj\Debug\netcoreapp3.1\Tests.pdb
 C:\Users\bogda\Desktop\PTS_PROJECT\Tests\obj\Debug\netcoreapp3.1\Tests.genruntimeconfig.cache
+C:\Users\user\Desktop\proekt_aleksieva\Tests\bin\Debug\netcoreapp3.1\System.IO.Abstractions.dll
+C:\Users\user\Desktop\proekt_aleksieva\Tests\bin\Debug\netcoreapp3.1\System.IO.Abstractions.TestingHelpers.dll
