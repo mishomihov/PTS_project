@@ -130,7 +130,7 @@ namespace PTS_Project_GUI
 
         private void CorrelationAnalysisButtonClick(object sender, RoutedEventArgs e)
         {
-
+            CorrelationAnalitics.InitCorelationAnalitics();
         }
 
         public static string GetFilePath()
