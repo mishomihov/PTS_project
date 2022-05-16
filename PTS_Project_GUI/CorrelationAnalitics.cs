@@ -8,7 +8,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PTS_Project_GUI
 {
-    internal class CorrelationAnalitics
+    public class CorrelationAnalitics
     {
         public static void InitCorelationAnalitics()
         {

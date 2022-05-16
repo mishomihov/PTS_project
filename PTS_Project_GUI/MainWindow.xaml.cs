@@ -46,22 +46,26 @@ namespace PTS_Project_GUI
 
         private void CollectPaths()
         {
-            System.Windows.MessageBox.Show("Please select the Logs Course File");
-            Globals.logsCoursePath = GetFilePath();
+            //System.Windows.MessageBox.Show("Please select the Logs Course File");
+            // Globals.logsCoursePath = GetFilePath();
+            Globals.logsCoursePath = "C:\\Users\\Dimitar\\Desktop\\kursove\\Logs_Course-A_StudentsActivities.xlsx";
 
-            if(Globals.logsCoursePath != "") //Ако е избран файл с логове, активираме бутоните, които зависят от него
+            if (Globals.logsCoursePath != "") //Ако е избран файл с логове, активираме бутоните, които зависят от него
             {
                 ChangeLogsCoursePathDependandButtons(true);
-            }else //Ако не е избран ги деактивираме
+            }
+            else //Ако не е избран ги деактивираме
             {
                 ChangeLogsCoursePathDependandButtons(false);
             }
 
-            System.Windows.MessageBox.Show("Please select the Course-A Year 1 File");
-            Globals.courseAYear1Path = GetFilePath();
+            //System.Windows.MessageBox.Show("Please select the Course-A Year 1 File");
+            //Globals.courseAYear1Path = GetFilePath();
+            Globals.courseAYear1Path = "C:\\Users\\Dimitar\\Desktop\\kursove\\Course-A_StudentsResults_Year-1.xlsx";
 
-            System.Windows.MessageBox.Show("Please select the Course-A Year 2 File");
-            Globals.courseAYear2Path = GetFilePath();
+           // System.Windows.MessageBox.Show("Please select the Course-A Year 2 File");
+            //Globals.courseAYear2Path = GetFilePath();
+            Globals.courseAYear2Path = "C:\\Users\\Dimitar\\Desktop\\kursove\\Course-A_StudentsResults_Year-2.xlsx";
 
             if (Globals.logsCoursePath != "" && Globals.courseAYear1Path != "" && Globals.courseAYear2Path != "") //Ако са избрани всички файлове активираме и останалите 2 бутона
             {
@@ -110,7 +114,7 @@ namespace PTS_Project_GUI
 
         private void ReadButtonClick(object sender, RoutedEventArgs e)
         {
-            
+            Summary.InitSummary();
         }
 
         private void FrequencyDistributionButtonClick(object sender, RoutedEventArgs e)//Слави
