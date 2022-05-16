@@ -12,31 +12,31 @@ namespace PTS_Project_GUI
     {
         public static void InitCorelationAnalitics()
         {
-            //Console.WriteLine("Input grades year 1 file");
-            //string filePath0 = GetFilePath();
+
             Worksheet wksGrades = ReadFile(Globals.courseAYear1Path);
+            Excel.Range gradesRange = wksGrades.UsedRange;
+            object[,] gradesData = gradesRange.Cells.Value;
 
-            //Console.WriteLine("Input grades year 2 file");
-            //string filePath1 = GetFilePath();
             Worksheet wksGrades1 = ReadFile(Globals.courseAYear2Path);
+            Excel.Range grades1Range = wksGrades1.UsedRange;
+            object[,] grades1Data = grades1Range.Cells.Value;
 
-
-            //Console.WriteLine("Input logs file");
-            //string filePath2 = GetFilePath();
             Worksheet wksAttendance = ReadFile(Globals.logsCoursePath);
-            wksAttendance.EnableAutoFilter = true;
+            Excel.Range attendanceRange = wksAttendance.UsedRange;
+            object[,] attendanceData = attendanceRange.Cells.Value;
 
-            Excel.Range attendanceRange = wksAttendance.UsedRange.Offset[1,0];
+            List<string> attendanceList = new List<string>();
+            for(int i = 2; i < attendanceData.GetLength(0); i++)
+            {
+                if ((String)attendanceData[i, 4] == "Course viewed")
+                {
+                    attendanceList.Add((String)attendanceData[i, 5]);
+                }
+            }
 
-            //attendanceRange.AutoFilter(4, "*Course viewed*", Excel.XlAutoFilterOperator.xlFilterValues);
-            //attendanceRange.AutoFilter(4, "*Course viewed*", Excel.XlAutoFilterOperator.xlFilterValues, System.Type.Missing, true);
 
-            //Excel.Range filteredAttendanceRange = attendanceRange.SpecialCells(
-            //                   Excel.XlCellType.xlCellTypeVisible,
-            //                   Excel.XlSpecialCellsValue.xlTextValues);
-
-            CalculateCorrelation(wksGrades, wksAttendance, 1);
-            CalculateCorrelation(wksGrades1, wksAttendance, 2);
+            CalculateCorrelation(gradesData, attendanceList, 1);
+            CalculateCorrelation(grades1Data, attendanceList, 2);
 
             Console.ReadLine();
         }
@@ -51,7 +51,7 @@ namespace PTS_Project_GUI
                 //pass that to workbook object  
                 //Excel.Workbook WB = oExcel.Workbooks.Open(filePath);
                 Excel.Application excel = new Excel.Application();
-                excel.Visible = true;
+                //excel.Visible = true;
                 Workbook WB = excel.Workbooks.Open(filePath);
 
 
@@ -76,43 +76,24 @@ namespace PTS_Project_GUI
             }
         }
 
-        public static int GetCourseAttendanceById(Worksheet wksAttendance, string id)
+        public static int GetCourseAttendanceById(List<string> attendanceList, string id)
         {
             try
             {
-                Excel.Range filteredRange = null;
+                int count = 0;
+                int listCount = attendanceList.Count;
 
-                if (wksAttendance.AutoFilter != null && wksAttendance.AutoFilterMode == true)
+                for (int i = 1; i < listCount; i++)
                 {
-                    wksAttendance.AutoFilter.ShowAllData();
+                    if (attendanceList[i].Contains(id + "' viewed the course"))
+                    {
+                        attendanceList.RemoveAt(i);
+                        ++count;
+                        --i;
+                        --listCount;
+                    }
+
                 }
-
-                //Excel.Range attendanceRange = wksAttendance.UsedRange.Offset[1, 0];
-
-                //attendanceRange.AutoFilter(4, "*Course viewed*", Excel.XlAutoFilterOperator.xlFilterValues, System.Type.Missing, true);
-
-                //Excel.Range filteredAttendanceRange = attendanceRange.SpecialCells(
-                //                   Excel.XlCellType.xlCellTypeVisible,
-                //                   Excel.XlSpecialCellsValue.xlTextValues);
-
-                Excel.Range attendance = wksAttendance.UsedRange.Offset[1, 0];
-
-                attendance.AutoFilter(5, "*" + id + "' viewed the course *", Excel.XlAutoFilterOperator.xlFilterValues, System.Type.Missing, true);
-
-                filteredRange = attendance.SpecialCells(Excel.XlCellType.xlCellTypeVisible);
-
-                object[,] attendanceValues = (object[,])filteredRange.Cells.Value;
-
-                int count = attendanceValues.GetLength(0);
-                // compensation for header
-                //int count = -1;
-
-                //foreach (Excel.Range area in filteredRange.Areas)
-                //{
-                //    count += area.Rows.Count;
-                //}
-
-
                 return count;
             }
             catch (Exception ex)
@@ -122,32 +103,25 @@ namespace PTS_Project_GUI
             }
         }
 
-        public static void CalculateCorrelation(Worksheet wksGrades, Worksheet wksAttendance, int year)
+        public static void CalculateCorrelation(object[,] gradesData, List<string> attendanceList, int year)
         {
-            Excel.Range xlRange = wksGrades.UsedRange;
-            Excel.Range filteredRange = xlRange.SpecialCells(XlCellType.xlCellTypeVisible);
 
             List<double> gradesList = new List<double> { };
             List<double> courseViewsList = new List<double> { };
 
             Console.WriteLine("Processing year " + year + " corellation...");
 
-            object[,] gradesArr = (object[,])filteredRange.Cells.Value;
-
-            Console.WriteLine("Fuck my life" + gradesArr[1, 1]);
-
-            for(int i = 2; i < gradesArr.GetLength(0); i++)
+            for(int i = 2; i < gradesData.GetLength(0); i++)
             {
                 try
                 {
-                    string id = gradesArr[i, 1].ToString();
-                    string grade = gradesArr[i, 2].ToString();
-                    int courseViews = GetCourseAttendanceById(wksAttendance, id);
+                    string id = gradesData[i, 1].ToString();
+                    string grade = gradesData[i, 2].ToString();
+                    int courseViews = GetCourseAttendanceById(attendanceList, id);
 
                     gradesList.Add(double.Parse(grade));
                     courseViewsList.Add(courseViews);
 
-                    //Console.WriteLine("Student " + id + " course views:" + courseViews + " | grade: " + grade);
                 }
                 catch (Exception ex)
                 {
@@ -158,51 +132,11 @@ namespace PTS_Project_GUI
                     }
                 }
             }
-            //foreach (var area in filteredRange.Areas)
-            //{
-            //    Console.WriteLine(area);
-
-            //    foreach (Excel.Row in area)
-            //    {
-            //        int indx = row.Row;
-
-            //        if (counter == 0)
-            //        {
-            //            counter++;
-            //            continue;
-            //        }
-            //        else
-            //        {
-            //            try
-            //            {
-            //                string id = (wksGrades.Cells[indx, 1] as Excel.Range).Value.ToString();
-            //                string grade = (wksGrades.Cells[indx, 2] as Excel.Range).Value.ToString();
-            //                int courseViews = GetCourseAttendanceById(attendanceRange, id);
-
-            //                gradesList.Add(double.Parse(grade));
-            //                courseViewsList.Add(courseViews);
-
-            //                //Console.WriteLine("Student " + id + " course views:" + courseViews + " | grade: " + grade);
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                if (ex.Message.Contains("Cannot perform runtime binding on a null reference"))
-            //                {
-
-            //                    //Console.WriteLine("Empty cell");
-            //                }
-            //            }
-
-            //        }
-
-            //    }
-            //}
 
             double corelation = ComputeCoeff(gradesList.ToArray(), courseViewsList.ToArray());
             corelation = Math.Truncate(corelation * 100) / 100;
 
-            Console.WriteLine("Year " + year + "course attendance and grade corelation coeficent: " + corelation);
-            MessageBox.Show("Year " + year + "course attendance and grade corelation coeficent: " + corelation);
+            MessageBox.Show("Year " + year + " course attendance and grade corelation coeficent: " + corelation);
         }
 
         public static double ComputeCoeff(double[] values1, double[] values2)
