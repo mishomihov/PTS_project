@@ -6,7 +6,7 @@ pipeline{
     stage("build"){
             steps{
               echo 'building the application'
-              echo 'application built'
+              echo 'application built - updated one more time'
             }
     }
             
